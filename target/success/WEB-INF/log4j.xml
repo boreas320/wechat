@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- trunk log -->
+	<appender name="root" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/success/root.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss}][%4p] - %m%n" />
+		</layout>
+	</appender>
+	<appender name="validateAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/success/validate.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss}][%4p] - %m%n" />
+		</layout>
+	</appender>
+
+
+	<logger name="org.shuai.wechat.success.controller.AccessController"
+		additivity="true">
+		<level value="warn" />
+		<appender-ref ref="validateAppender" />
+	</logger>
+
+
+
+
+
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="root" />
+	</root>
+</log4j:configuration>
